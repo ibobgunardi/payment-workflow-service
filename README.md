@@ -1,5 +1,7 @@
 # LeafLink Payment Workflow
 
+[![CI](https://github.com/ibobgunardi/leaflink-payment-workflow/actions/workflows/ci.yml/badge.svg)](https://github.com/ibobgunardi/leaflink-payment-workflow/actions/workflows/ci.yml)
+
 Small Java/Spring Boot portfolio service modeled around financial workflow backend work: idempotent payment authorization, relational persistence, retry handling, and outbox-style event publication.
 
 ## Why this exists
