@@ -82,7 +82,7 @@ public class PaymentService {
             String fingerprint
     ) {
         Instant now = clock.instant();
-        PaymentTransaction transaction = PaymentTransaction.create(
+        PaymentTransaction transaction = transactionRepository.save(PaymentTransaction.create(
                 idempotencyKey,
                 fingerprint,
                 command.externalOrderId(),
@@ -91,9 +91,7 @@ public class PaymentService {
                 command.amount(),
                 command.currency(),
                 now
-        );
-
-        transactionRepository.save(transaction);
+        ));
         appendEvent(transaction, PaymentEventType.PAYMENT_CREATED, Map.of(
                 "externalOrderId", transaction.getExternalOrderId(),
                 "amount", transaction.getAmount(),
