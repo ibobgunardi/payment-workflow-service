@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: leaflink-payment-workflow
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/payment_workflow}
+    username: ${SPRING_DATASOURCE_USERNAME:payments}
+    password: ${SPRING_DATASOURCE_PASSWORD:payments}
+  flyway:
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+payments:
+  gateway:
+    max-attempts: ${PAYMENTS_GATEWAY_MAX_ATTEMPTS:3}
+  outbox:
+    publish-delay-ms: ${PAYMENTS_OUTBOX_PUBLISH_DELAY_MS:10000}
+    batch-size: ${PAYMENTS_OUTBOX_BATCH_SIZE:50}
