@@ -1,21 +1,12 @@
-# LeafLink Payment Workflow
+# Payment Workflow Service
 
-[![CI](https://github.com/ibobgunardi/leaflink-payment-workflow/actions/workflows/ci.yml/badge.svg)](https://github.com/ibobgunardi/leaflink-payment-workflow/actions/workflows/ci.yml)
+[![CI](https://github.com/ibobgunardi/payment-workflow-service/actions/workflows/ci.yml/badge.svg)](https://github.com/ibobgunardi/payment-workflow-service/actions/workflows/ci.yml)
 
 Small Java/Spring Boot portfolio service modeled around financial workflow backend work: idempotent payment authorization, relational persistence, retry handling, and outbox-style event publication.
 
-## Why this exists
+## Overview
 
-This project is designed to support applications for senior backend roles that care about:
-
-- Java/JVM backend services
-- Payment workflows and transaction processing
-- API design with idempotency
-- Postgres and schema migrations
-- Reliability patterns such as retries and outbox events
-- Docker-based local development
-
-It is intentionally compact. The goal is to make the architecture easy to discuss in an interview, not to pretend this is a full payment processor.
+A small Spring Boot service for payment authorization: idempotent requests, retries for gateway timeouts, Postgres with schema migrations, and outbox-style event publishing. It's kept compact so the design is easy to read.
 
 ## Architecture
 
@@ -108,7 +99,7 @@ The tests cover:
 - Retry behavior for transient gateway failures
 - Outbox event sequence for a retried authorization
 
-## Interview Notes
+## Design Notes
 
 Useful points to discuss:
 
